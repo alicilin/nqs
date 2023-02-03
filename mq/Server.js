@@ -62,7 +62,7 @@ export async function bind({ connections, store, secretKey }) {
     //-----------------------------------------------------------------
     await rep.bind(connections[0]);
     await pub.bind(connections[1]);
-    await knex.migrate.latest({ directory: '../migrations/MQ' });
+    await knex.migrate.latest({ directory: '../migrations/mq' });
     await knex('consumers').delete();
     //-----------------------------------------------------------------
     logger('bind reply server: %s', connections[0]);

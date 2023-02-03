@@ -15,7 +15,7 @@ npm i @connectterou/nqs
 
 ```javascript
 // import the server
-import { bind } from '@connectterou/nqs/MessageQueue/Server.js';
+import { bind } from '@connectterou/nqs/mq/Server.js';
 // choose a store type to store the messages
 // vailable store types that you can use = SQLite, MySQL
 import { SQLite } from '@connectterou/nqs/stores.js';
@@ -29,7 +29,7 @@ await bind({ connections, store: SQLite({ filename: './test.db' }), secretKey: '
 #### Message Queue Publisher
 
 ```javascript
-import { createPublisher, PublishParams } from '@connectterou/nqs/MessageQueue/Publisher.js';
+import { createPublisher, PublishParams } from '@connectterou/nqs/mq/Publisher.js';
 const connections = ['tcp://127.0.0.1:5000', 'tcp://127.0.0.1:5001'];
 // Giving the first value of the connections constant as "addr" is enough. We don't need to connect to the PubSub server
 const { publish, cancel } = createPublisher({ addr: connections[0], secretKey: '12345' });
@@ -47,7 +47,7 @@ await publish(
 #### Message Queue Consumer
 ```javascript
 // import the server
-import { Consumer } from '@connectterou/nqs/MessageQueue/Consumer.js';
+import { Consumer } from '@connectterou/nqs/mq/Consumer.js';
 // The connections constant has 2 parameters. The first one is Req/Res, the second one is the Pub/Sub server
 const connections = ['tcp://127.0.0.1:5000', 'tcp://127.0.0.1:5001'];
 // channel = channel is the consumer will subscribe to. This consumer only receives messages sent to this channel and to itself
@@ -73,7 +73,7 @@ consumer.connect() // Connects the consumer to the server.
 
 ```javascript
 // Importing to bind the server.
-import { bind } from '@connectterou/nqs/ServiceDiscovery/Server.js';
+import { bind } from '@connectterou/nqs/sd/Server.js';
 // We define the store (to keep track of services) by using "import { SQLite }" or you can also use the MySQL store by defining it as "import { MySQL }".
 import { SQLite } from '@connectterou/nqs/stores.js';
 // The 'port' variable is defined to specify the port number the server will listen to incoming connections on. This allows us to specify which port our server will use to accept incoming traffic and communication.
@@ -107,7 +107,7 @@ GET | POST | DELETE | PUT http://user:password@host:port/request/[target_service
 
 ##### - Service Discovery friendly, URL transformer
 ```javascript
-import { Transformer } from '@connectterou/nqs/ServiceDiscovery/Transformer.js';
+import { Transformer } from '@connectterou/nqs/sd/Transformer.js';
 let transformer = new Transformer('http://[service_discovery_server_host]:[port]', 'user', 'password');
 
 transformer.transform('http://[servicename]/test/to/path?test=mest') 
