@@ -1,23 +1,12 @@
 {
   "name": "@connectterou/nqs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "files": [
-    "./stores.js",
-    "./mq/index.js",
-    "./mq/Server.js",
-    "./mq/Consumer.js",
-    "./mq/Publisher.js",
-    "./mq/index.js",
-    "./sd/Server.js",
-    "./sd/Transformer.js",
-    "./sd/index.js"
-  ],
   "exports": {
     "./stores.js": "./stores.js",
     "./mq/index.js": "./mq/index.js",
