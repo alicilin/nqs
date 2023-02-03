@@ -57,13 +57,13 @@ let consumer = new Consumer({ connections, channel: 'test', service: 'test', sec
 // The first parameter of the on method = Event name. Receives an event sent from another service. The on method can be defined multiple times
 // The second parameter of the on method = callback(message, done, reject) = the callback to be executed when a message arrives
 // The callback = the first parameter is the received message, the second parameter is the function to be called when the process is finished. The third parameter is called if there is any error and if the message needs to be repeated. In this way, the message is resent to the queue
-puller.on('test-event', (message, done, reject) => {
+consumer.on('test-event', (message, done, reject) => {
     console.log(message, 'puller 1');
     done();
     //reject();
 });
 
-puller.connect() // Connects the consumer to the server.
+consumer.connect() // Connects the consumer to the server.
 ```
 
 
@@ -87,7 +87,6 @@ const store = SQLite({ filename: './sr.sqlite' });
 await bind({ port, store, workers: 2, user: 'ali', password: 'veli'  });
 ```
 ##### - Service Discovery Server Endpoints
-- You can test and learn the required schemas for endpoints through the /playground.
 ```text
 GET http://user:password@host:port/services 
 // List of all services along with information about each

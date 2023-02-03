@@ -35,7 +35,7 @@ const schemes = {
 async function master({ store, workers = 2 }) {
     let knex = Knex(store['options']);
     //--------------------------------
-    await knex.migrate.latest({ directory: '../migrations/SR' });
+    await knex.migrate.latest({ directory: '../migrations/SD' });
     await knex('services').update({ status: 'DOWN' });
     //--------------------------------
     for (let i = 0; i < workers; i++) {
