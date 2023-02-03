@@ -9,19 +9,26 @@
   },
   "files": [
     "./stores.js",
-    "./MessageQueue/Server.js",
-    "./MessageQueue/Consumer.js",
-    "./MessageQueue/Publisher.js",
-    "./ServiceDiscovery/Server.js",
-    "./ServiceDiscovery/Transformer.js"
+    "./mq/index.js",
+    "./mq/Server.js",
+    "./mq/Consumer.js",
+    "./mq/Publisher.js",
+    "./mq/index.js",
+    "./sd/Server.js",
+    "./sd/Transformer.js",
+    "./sd/index.js"
   ],
   "exports": {
     "./stores.js": "./stores.js",
-    "./MessageQueue/Server.js": "./MessageQueue/Server.js",
-    "./MessageQueue/Consumer.js": "./MessageQueue/Consumer.js",
-    "./MessageQueue/Publisher.js": "./MessageQueue/Publisher.js",
-    "./ServiceDiscovery/Server.js": "./ServiceDiscovery/Server.js",
-    "./ServiceDiscovery/Transformer.js": "./ServiceDiscovery/Transformer.js"
+    "./mq/index.js": "./mq/index.js",
+    "./mq": "./mq/index.js",
+    "./mq/Server.js": "./mq/Server.js",
+    "./mq/Consumer.js": "./mq/Consumer.js",
+    "./mq/Publisher.js": "./mq/Publisher.js",
+    "./sd/Server.js": "./sd/Server.js",
+    "./sd/Transformer.js": "./sd/Transformer.js",
+    "./sd/index.js": "./sd/index.js",
+    "./sd": "./sd/index.js"
   },
   "engines": {
     "node": ">= 16.0.0"
