@@ -89,10 +89,21 @@ await bind({ port, store, workers: 2, user: 'ali', password: 'veli'  });
 ##### - Service Discovery Server Endpoints
 - You can test and learn the required schemas for endpoints through the /playground.
 ```text
-GET http://user:password@host:port/playground
-GET http://user:password@host:port/services
-POST http://user:password@host:port/register
-GET | POST | DELETE | PUT http://user:password@host:port/request/[servis adı]/[hedef]/[dizin]/[blabla]
+GET http://user:password@host:port/services 
+// List of all services along with information about each
+-------------------------------------------------------------------------------------
+POST http://user:password@host:port/register 
+// New service registration. A JSON like the following is required.
+{
+    "name": "service_name", // The name to be used for accessing this service.
+    "http_endpoint": "http://testservice:8080", // HTTP address of the service.
+    "check_endpoint": "http://testservice:8080/health-check", // Endpoint used to ensure the service is running. Note: This endpoint should return a 200 code.
+    "auth": "user:password", // If the service uses "Basic Auth", it must be entered. Otherwise, Null should be given.
+    "headers": { "Authrozation": "Bearer blablabla" } // Header information to be included when a request is received from another service to this service.
+}
+-------------------------------------------------------------------------------------
+GET | POST | DELETE | PUT http://user:password@host:port/request/[target_service_name]/[path]/[to]/[blabla] 
+//  Used to make a request to a service by its name.
 ```
 
 ##### - Service Discovery friendly, URL transformer
